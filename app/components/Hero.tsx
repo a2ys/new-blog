@@ -1,5 +1,6 @@
 "use client";
-import Noise from "./Noise";
+
+import Noise from "@/components/Noise";
 
 export function Hero() {
   return (
@@ -7,13 +8,7 @@ export function Hero() {
       className="relative overflow-hidden px-6 py-24 sm:py-32 lg:px-8"
       style={{ background: "var(--bg-base)" }}
     >
-      <Noise
-        patternSize={250}
-        patternScaleX={2}
-        patternScaleY={2}
-        patternRefreshInterval={2}
-        patternAlpha={15}
-      />
+      <Noise patternRefreshInterval={2} patternAlpha={15} />
 
       <div className="relative z-10 mx-auto max-w-2xl text-center">
         <h1

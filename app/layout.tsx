@@ -1,5 +1,8 @@
 import "./globals.css";
+
+import { Navbar } from "@/components/Navbar";
 import { Work_Sans } from "next/font/google";
+import { Footer } from "@/components/Footer";
 
 const workSans = Work_Sans({
   subsets: ["latin"],
@@ -18,7 +21,11 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <Navbar />
+        <section className="flex-1">{children}</section>
+        <Footer />
+      </body>
     </html>
   );
 }

@@ -1,79 +1,77 @@
 "use client";
-import { useRef, useEffect } from "react";
-import "./Noise.css";
 
-const Noise = ({
-  patternSize = 250,
-  patternScaleX = 1,
-  patternScaleY = 1,
-  patternRefreshInterval = 2,
-  patternAlpha = 15,
-}: {
-  patternSize?: number;
-  patternScaleX?: number;
-  patternScaleY?: number;
+import { useRef, useEffect } from "react";
+
+interface NoiseProps {
   patternRefreshInterval?: number;
   patternAlpha?: number;
-}) => {
+}
+
+const Noise = ({
+  patternRefreshInterval = 2,
+  patternAlpha = 15,
+}: NoiseProps) => {
   const grainRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
     const canvas = grainRef.current;
     if (!canvas) return;
+
     const ctx = canvas.getContext("2d", { alpha: true });
     if (!ctx) return;
 
-    let frame = 0;
-    let animationId: number;
     const canvasSize = 1024;
 
-    const resize = () => {
-      canvas.width = canvasSize;
-      canvas.height = canvasSize;
-      canvas.style.width = "100%";
-      canvas.style.height = "100%";
-    };
+    canvas.width = canvasSize;
+    canvas.height = canvasSize;
+    canvas.style.width = "100%";
+    canvas.style.height = "100%";
 
-    const drawGrain = () => {
+    const cacheSize = 24;
+    const frameCache: ImageData[] = [];
+
+    for (let f = 0; f < cacheSize; f++) {
       const imageData = ctx.createImageData(canvasSize, canvasSize);
       const data = imageData.data;
-      for (let i = 0; i < data.length; i += 4) {
-        const value = Math.random() * 255;
-        data[i] = value;
-        data[i + 1] = value;
-        data[i + 2] = value;
-        data[i + 3] = patternAlpha;
+      const buffer = new Uint32Array(data.buffer);
+      const alphaValue = patternAlpha & 0xff;
+
+      for (let i = 0; i < buffer.length; i++) {
+        const value = (Math.random() * 255) | 0;
+        buffer[i] = (alphaValue << 24) | (value << 16) | (value << 8) | value;
       }
-      ctx.putImageData(imageData, 0, 0);
-    };
+      frameCache.push(imageData);
+    }
+
+    let frameCount = 0;
+    let animationId: number;
 
     const loop = () => {
-      if (frame % patternRefreshInterval === 0) drawGrain();
-      frame++;
+      if (frameCount % patternRefreshInterval === 0) {
+        const randomCacheIndex = Math.floor(Math.random() * cacheSize);
+        ctx.putImageData(frameCache[randomCacheIndex], 0, 0);
+      }
+      frameCount++;
       animationId = requestAnimationFrame(loop);
     };
 
-    window.addEventListener("resize", resize);
-    resize();
     loop();
 
     return () => {
-      window.removeEventListener("resize", resize);
       cancelAnimationFrame(animationId);
     };
-  }, [
-    patternSize,
-    patternScaleX,
-    patternScaleY,
-    patternRefreshInterval,
-    patternAlpha,
-  ]);
+  }, [patternRefreshInterval, patternAlpha]);
 
   return (
     <canvas
       className="noise-overlay"
       ref={grainRef}
-      style={{ imageRendering: "pixelated" }}
+      style={{
+        imageRendering: "pixelated",
+        position: "absolute",
+        inset: 0,
+        pointerEvents: "none",
+      }}
     />
   );
 };
