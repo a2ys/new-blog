@@ -105,23 +105,23 @@ export default function PrivacyPage() {
 
       <main className="relative min-h-screen">
         <section
-          className="relative overflow-hidden px-6 py-20 sm:py-28 lg:px-8"
+          className="relative overflow-hidden px-4 py-16 sm:px-6 sm:py-24 lg:px-8 lg:py-28"
           style={{ background: "var(--bg-base)" }}
         >
           <Noise patternRefreshInterval={2} patternAlpha={15} />
           <div className="relative z-10 mx-auto max-w-2xl text-center">
             <h1
-              className="text-5xl font-black leading-none tracking-tight sm:text-7xl"
+              className="text-4xl font-black leading-none tracking-tight sm:text-5xl lg:text-7xl"
               style={{ color: "var(--fg-primary)" }}
             >
               Privacy Policy
             </h1>
             <div
-              className="mx-auto mt-5 mb-6 h-0.5 w-10 opacity-60"
+              className="mx-auto mt-4 mb-5 h-0.5 w-10 opacity-60 sm:mt-5 sm:mb-6"
               style={{ background: "var(--accent)" }}
             />
             <p
-              className="mx-auto max-w-xl text-base leading-relaxed sm:text-lg"
+              className="mx-auto max-w-xs text-sm leading-relaxed sm:max-w-xl sm:text-base lg:text-lg"
               style={{ color: "var(--fg-muted)" }}
             >
               How I handle your data, in plain language.
@@ -130,7 +130,7 @@ export default function PrivacyPage() {
         </section>
 
         <section
-          className="px-6 py-16 lg:px-8"
+          className="px-4 py-12 sm:px-6 sm:py-16 lg:px-8"
           style={{ background: "var(--bg-surface)" }}
         >
           <div className="mx-auto max-w-2xl">
@@ -141,15 +141,15 @@ export default function PrivacyPage() {
               {sections.map(({ tag, title, body, blocks }) => (
                 <div
                   key={tag}
-                  className="section-card px-6 py-7"
+                  className="section-card px-4 py-6 sm:px-6 sm:py-7"
                   style={{
                     background: "transparent",
                     borderBottom: "1px solid var(--border)",
                   }}
                 >
-                  <div className="flex items-start gap-5">
+                  <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:gap-5">
                     <span
-                      className="mt-0.5 shrink-0 text-xs font-bold uppercase tracking-widest"
+                      className="shrink-0 text-xs font-bold uppercase tracking-widest sm:mt-0.5"
                       style={{ color: "var(--accent)", minWidth: "2.5rem" }}
                     >
                       {tag}
@@ -158,7 +158,7 @@ export default function PrivacyPage() {
                     <div className="flex-1">
                       {title && (
                         <h2
-                          className="mb-3 text-base font-bold tracking-tight"
+                          className="mb-2 text-sm font-bold tracking-tight sm:mb-3 sm:text-base"
                           style={{ color: "var(--fg-primary)" }}
                         >
                           {title}
@@ -194,7 +194,7 @@ export default function PrivacyPage() {
             </div>
 
             <p
-              className="mt-8 text-xs leading-relaxed"
+              className="mt-6 text-xs leading-relaxed sm:mt-8"
               style={{ color: "var(--fg-faint)" }}
             >
               Last updated: May 2026. This policy is part of the open-source

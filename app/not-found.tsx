@@ -36,36 +36,28 @@ export default function NotFound() {
           margin-left: 2px;
         }
       `}</style>
-
       <main
-        className="relative flex min-h-[calc(100vh-3.5rem)] flex-col items-center justify-center overflow-hidden px-6 text-center"
+        className="relative flex min-h-[calc(100vh-3.5rem)] flex-col items-center justify-center overflow-hidden px-4 text-center sm:px-6"
         style={{ background: "var(--bg-base)" }}
       >
-        <Noise
-          patternScaleX={2}
-          patternScaleY={2}
-          patternRefreshInterval={2}
-          patternAlpha={15}
-        />
-
+        <Noise patternRefreshInterval={2} patternAlpha={15} />
         <div className="relative z-10 flex flex-col items-center">
           <div className="relative select-none">
             <span
-              className="text-[10rem] font-black leading-none tracking-tighter sm:text-[14rem]"
+              className="text-[7rem] font-black leading-none tracking-tighter sm:text-[10rem] lg:text-[14rem]"
               style={{ color: "var(--fg-faint)", opacity: 0.25 }}
             >
               404
             </span>
             <span
-              className="float absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-5xl sm:text-6xl"
+              className="float absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-4xl sm:text-5xl lg:text-6xl"
               aria-hidden="true"
             >
               🎼
             </span>
           </div>
-
           <h1
-            className="mt-2 text-2xl font-black tracking-tight sm:text-3xl"
+            className="mt-2 text-xl font-black tracking-tight sm:text-2xl lg:text-3xl"
             style={{ color: "var(--fg-primary)" }}
           >
             Looks like you hit a wrong note
@@ -73,31 +65,28 @@ export default function NotFound() {
               |
             </span>
           </h1>
-
           <div
             className="mx-auto mt-4 mb-6 h-0.5 w-10 opacity-60"
             style={{ background: "var(--accent)" }}
           />
-
           <p
-            className="max-w-sm text-sm leading-relaxed"
+            className="max-w-xs text-sm leading-relaxed sm:max-w-sm"
             style={{ color: "var(--fg-muted)" }}
           >
             This page can&apos;t be found. Maybe it was deleted, moved, or never
             existed in the first place.
           </p>
-
-          <div className="mt-8 flex items-center gap-4">
+          <div className="mt-8 flex w-full flex-col items-center gap-3 sm:w-auto sm:flex-row sm:gap-4">
             <Link
               href="/"
-              className="px-7 py-3 text-sm font-medium tracking-wide transition-opacity hover:opacity-85"
+              className="w-full px-7 py-3 text-sm font-medium tracking-wide transition-opacity hover:opacity-85 sm:w-auto"
               style={{ background: "var(--accent)", color: "var(--bg-base)" }}
             >
               Back to home
             </Link>
             <Link
               href="/posts"
-              className="px-7 py-3 text-sm font-medium"
+              className="w-full px-7 py-3 text-sm font-medium sm:w-auto"
               style={{
                 color: "var(--fg-muted)",
                 border: "1px solid var(--border)",

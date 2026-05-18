@@ -12,13 +12,13 @@ const links = [
 export function Footer() {
   return (
     <footer
-      className="px-6 lg:px-10"
+      className="px-4 sm:px-6 lg:px-10"
       style={{
         background: "var(--bg-base)",
         borderTop: "1px solid var(--border)",
       }}
     >
-      <div className="mx-auto flex max-w-5xl flex-col gap-6 py-10 sm:flex-row sm:items-start sm:justify-between">
+      <div className="mx-auto flex max-w-5xl flex-col gap-8 py-10 sm:flex-row sm:items-start sm:justify-between">
         <div className="flex flex-col gap-2">
           <div
             className="flex items-center text-[15px] font-bold"
@@ -48,15 +48,15 @@ export function Footer() {
             </Link>
           </div>
           <p
-            className="max-w-55 text-xs leading-relaxed"
+            className="max-w-56 text-xs leading-relaxed"
             style={{ color: "var(--fg-faint)" }}
           >
             A community blog where everyone gets a stage.
           </p>
         </div>
 
-        <div className="flex flex-col items-start gap-4 sm:items-end">
-          <nav className="flex flex-wrap gap-x-5 gap-y-1">
+        <div className="flex flex-col gap-4 sm:items-end">
+          <nav className="flex flex-wrap gap-x-5 gap-y-2">
             {links.map(({ label, href }) => (
               <Link
                 key={href}
