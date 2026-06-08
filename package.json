@@ -9,10 +9,27 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@supabase/ssr": "^0.10.3",
+    "@supabase/supabase-js": "^2.106.2",
+    "@tailwindcss/typography": "^0.5.19",
+    "@tiptap/core": "^3.24.0",
+    "@tiptap/extension-code-block-lowlight": "^3.24.0",
+    "@tiptap/extension-link": "^3.24.0",
+    "@tiptap/extension-placeholder": "^3.24.0",
+    "@tiptap/pm": "^3.24.0",
+    "@tiptap/react": "^3.24.0",
+    "@tiptap/starter-kit": "^3.24.0",
+    "@tiptap/suggestion": "^3.24.0",
+    "highlight.js": "^11.11.1",
+    "lowlight": "^3.3.0",
+    "marked": "^18.0.4",
     "next": "16.2.6",
     "phosphor-react": "^1.4.1",
     "react": "19.2.4",
-    "react-dom": "19.2.4"
+    "react-dom": "19.2.4",
+    "react-markdown": "^10.1.0",
+    "rehype-highlight": "^7.0.2",
+    "remark-gfm": "^4.0.1"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",

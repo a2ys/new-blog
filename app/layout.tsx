@@ -1,14 +1,16 @@
 import "./globals.css";
-
-import { Navbar } from "@/components/Navbar";
 import { Work_Sans } from "next/font/google";
-import { Footer } from "@/components/Footer";
+import type { Metadata } from "next";
 
 const workSans = Work_Sans({
   subsets: ["latin"],
   variable: "--font-work-sans",
   display: "swap",
 });
+
+export const metadata: Metadata = {
+  title: "Savant",
+};
 
 export default function RootLayout({
   children,
@@ -21,11 +23,7 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className="min-h-full flex flex-col">
-        <Navbar />
-        <section className="flex-1">{children}</section>
-        <Footer />
-      </body>
+      <body className="min-h-full flex flex-col">{children}</body>
     </html>
   );
 }

@@ -1,102 +1,82 @@
-"use client";
-
 import Link from "next/link";
-import Noise from "@/components/Noise";
 
 export default function NotFound() {
   return (
-    <>
-      <style>{`
-        .back-link {
-          color: var(--accent);
-          text-decoration: none;
-          border-bottom: 1px solid transparent;
-          transition: border-color 0.15s ease;
-          font-size: 0.875rem;
-          font-weight: 500;
-        }
-        .back-link:hover {
-          border-color: var(--accent);
-        }
-        @keyframes float {
-          0%, 100% { transform: translateY(0px); }
-          50% { transform: translateY(-10px); }
-        }
-        .float {
-          animation: float 3.5s ease-in-out infinite;
-          display: inline-block;
-        }
-        @keyframes blink {
-          0%, 100% { opacity: 1; }
-          50% { opacity: 0; }
-        }
-        .cursor {
-          animation: blink 1s step-end infinite;
-          display: inline-block;
-          margin-left: 2px;
-        }
-      `}</style>
-      <main
-        className="relative flex min-h-[calc(100vh-3.5rem)] flex-col items-center justify-center overflow-hidden px-4 text-center sm:px-6"
-        style={{ background: "var(--bg-base)" }}
+    <div className="min-h-full flex flex-col">
+      <section
+        className="flex-1 flex flex-col justify-center px-6 lg:px-12 py-20"
+        style={{
+          backgroundColor: "#f5c8c8",
+          backgroundImage: `
+            radial-gradient(circle, rgba(0,0,0,0.18) 1px, transparent 1px),
+            radial-gradient(circle, rgba(0,0,0,0.18) 1px, transparent 1px)
+          `,
+          backgroundSize: "22px 22px",
+          backgroundPosition: "0 0, 11px 11px",
+        }}
       >
-        <Noise patternRefreshInterval={2} patternAlpha={15} />
-        <div className="relative z-10 flex flex-col items-center">
-          <div className="relative select-none">
-            <span
-              className="text-[7rem] font-black leading-none tracking-tighter sm:text-[10rem] lg:text-[14rem]"
-              style={{ color: "var(--fg-faint)", opacity: 0.25 }}
-            >
-              404
-            </span>
-            <span
-              className="float absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-4xl sm:text-5xl lg:text-6xl"
-              aria-hidden="true"
-            >
-              🎼
-            </span>
-          </div>
-          <h1
-            className="mt-2 text-xl font-black tracking-tight sm:text-2xl lg:text-3xl"
-            style={{ color: "var(--fg-primary)" }}
+        <h1 className="relative inline-block self-start pb-5 text-[100px] font-black tracking-tight sm:text-[140px] lg:text-[180px] text-black leading-none">
+          404
+          <svg
+            viewBox="0 0 360 20"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            className="absolute left-0 bottom-0 w-full overflow-visible"
+            preserveAspectRatio="none"
+            aria-hidden="true"
           >
-            Looks like you hit a wrong note
-            <span className="cursor" style={{ color: "var(--accent)" }}>
-              |
-            </span>
-          </h1>
-          <div
-            className="mx-auto mt-4 mb-6 h-0.5 w-10 opacity-60"
-            style={{ background: "var(--accent)" }}
-          />
-          <p
-            className="max-w-xs text-sm leading-relaxed sm:max-w-sm"
-            style={{ color: "var(--fg-muted)" }}
-          >
-            This page can&apos;t be found. Maybe it was deleted, moved, or never
-            existed in the first place.
+            <path
+              d="M4 7 C15 18 35 2 58 14 C75 22 90 3 115 11 C138 18 148 4 172 9 C194 14 202 2 228 11 C250 18 262 4 288 8 C306 11 318 3 342 13 C350 16 355 9 360 11"
+              stroke="#8b1a1a"
+              strokeWidth="9"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M6 14 C18 11 38 17 62 13 C80 10 94 15 118 12 C140 10 152 14 176 12 C198 10 206 13 232 11 C254 9 266 13 292 10 C310 9 322 12 344 10"
+              stroke="#8b1a1a"
+              strokeWidth="4"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              opacity="0.4"
+            />
+          </svg>
+        </h1>
+
+        <div className="mt-10 max-w-lg">
+          <h2 className="text-2xl font-black tracking-tight text-black sm:text-3xl">
+            Page not found
+          </h2>
+          <p className="mt-4 text-base leading-relaxed text-gray-700">
+            This page was deleted, moved, or never existed in the first place.
+            Either way, it&apos;s not here.
           </p>
-          <div className="mt-8 flex w-full flex-col items-center gap-3 sm:w-auto sm:flex-row sm:gap-4">
+          <div className="mt-8 flex items-center gap-3 flex-wrap">
             <Link
               href="/"
-              className="w-full px-7 py-3 text-sm font-medium tracking-wide transition-opacity hover:opacity-85 sm:w-auto"
-              style={{ background: "var(--accent)", color: "var(--bg-base)" }}
+              className={[
+                "rounded-full px-6 py-2.5 text-sm font-bold no-underline",
+                "border-2 border-black bg-black text-white",
+                "hover:bg-transparent hover:text-black",
+                "transition-all duration-200",
+              ].join(" ")}
             >
-              Back to home
+              Back to Home
             </Link>
             <Link
               href="/posts"
-              className="w-full px-7 py-3 text-sm font-medium sm:w-auto"
-              style={{
-                color: "var(--fg-muted)",
-                border: "1px solid var(--border)",
-              }}
+              className={[
+                "rounded-full px-6 py-2.5 text-sm font-bold no-underline",
+                "border-2 border-black text-black",
+                "hover:bg-black hover:text-white",
+                "transition-all duration-200",
+              ].join(" ")}
             >
-              Browse posts
+              Browse Posts
             </Link>
           </div>
         </div>
-      </main>
-    </>
+      </section>
+    </div>
   );
 }
